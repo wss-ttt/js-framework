@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn1">确定</button>
+    <button type="button" id="btn2">确定2</button>
+</body>
+<script src="core.js"></script>
+<script>
+    // 添加静态方法 
+    $.extend({
+        // 注册事件
+        addEvent: function (target, type, fn) {
+            // 对参数进行判断
+            // target必须是DOM
+            // type 必须是字符串
+            // fn必须是函数
+            if (!target.nodeType || !jQuery.isString(type) || !jQuery.isFunction(fn)) {
+                return;
+            }
+            if (target.addEventListener) {
+                target.addEventListener(type, fn);
+            } else {
+                // target.attachEvent('on' + type, fn);
+                // 统一this的指向(ie8(含)以下版本)
+                target.attachEvent('on' + type,function(){
+                    fn.call(target);
+                })
+            }
+        },
+        // 解绑事件
+        removeEvent: function (target, type, fn) {
+            // 对参数进行判断
+            // target必须是DOM
+            // type 必须是字符串
+            // fn必须是函数
+            if (!target.nodeType || !jQuery.isString(type) || !jQuery.isFunction(fn)) {
+                return;
+            }
+            if (target.removeEventListener) {
+                target.removeEventListener(type, fn);
+            } else {
+                target.detachEvent('on' + type, fn);
+            }
+        }
+    });
+
+    // 添加实例方法
+    $.fn.extend({
+        on: function (type, fn) {
+            /*
+            实现思路:
+                1.遍历所有元素
+                2.依次绑定事件(调用静态方法绑定) 
+                3.return this
+            */
+            this.each(function () {
+                jQuery.addEvent(this, type, fn);
+            });
+            return this;
+        },
+        off: function (type, fn) {
+            /*
+            实现思路:
+                1.遍历所有元素
+                2.依次移除事件(调用静态方法绑定) 
+                3.return this
+            */
+            this.each(function () {
+                jQuery.removeEvent(this, type, fn);
+            });
+            return this;
+        }
+    });
+    /*
+    存在的3个问题:
+        1.事件回调函数中的this,在ie8中指向的是window对象
+        2.ie8事件回调函数触发的顺序和标准浏览器不一致,ie8是倒叙触发
+        3.off方法不能像jq那样不传回调也能移除 
+     
+    */
+    function fn1() {
+        console.log(this);
+        console.log(1);
+    }
+    function fn2() {
+        console.log(2);
+    }
+    // 可以绑定多个事件类型
+    $('button').on('click', fn1);
+    // 解绑事件
+    // $('button').off('click',fn2).off('click',fn1);
+
+
+    /* var btn1 = document.getElementById('btn1');
+
+    addEvent(btn1,'click',fn1);
+
+    function addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else if (target.attachEvent) {
+            target.attachEvent('on' + type, fn);
+        } else {
+            target['on' + type] = fn;
+        }
+    } */
+</script>
+
+</html>

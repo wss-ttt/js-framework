@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn1">确定</button>
+</body>
+<script src="core.js"></script>
+<script>
+    // 添加静态方法 
+    $.extend({
+        // 注册事件
+        addEvent: function (target, type, fn) {
+            // 对参数进行判断
+            // target必须是DOM
+            // type 必须是字符串
+            // fn必须是函数
+            if (!target.nodeType || !jQuery.isString(type) || !jQuery.isFunction(fn)) {
+                return;
+            }
+            if (target.addEventListener) {
+                target.addEventListener(type, fn);
+            } else {
+                // target.attachEvent('on' + type, fn);
+                // 统一this的指向(ie8(含)以下版本)
+                target.attachEvent('on' + type, function(){
+                    fn.call(target);
+                });
+            }
+        },
+        // 解绑事件
+        removeEvent: function (target, type, fn) {
+            // 对参数进行判断
+            // target必须是DOM
+            // type 必须是字符串
+            // fn必须是函数
+            if (!target.nodeType || !jQuery.isString(type) || !jQuery.isFunction(fn)) {
+                return;
+            }
+            if (target.removeEventListener) {
+                target.removeEventListener(type, fn);
+            } else {
+                target.detachEvent('on' + type, fn);
+            }
+        }
+    });
+
+</script>
+<script>
+    var btn1 = document.getElementById('btn1');
+    $.addEvent(btn1,'click',function(){
+        console.log(this);
+    })
+</script>
+</html>

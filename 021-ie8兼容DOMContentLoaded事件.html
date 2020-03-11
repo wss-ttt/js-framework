@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // ie8以下注册事件 使用的是attachEvent方法
+    // ie8下模式DOMContentLoaded事件
+    document.attachEvent('onreadystatechange',function(){
+        if(document.readyState === 'complete'){
+            var spans = document.querySelectorAll('span');
+            console.log(spans);
+        }
+    });
+</script>
+<span>111</span>
+<span>222</span>
+</html>

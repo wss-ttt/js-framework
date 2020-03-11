@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var arr = [11, 22, 22, 11, 11, 22];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === 11) {
+            arr.splice(i, 1);   // 剔除
+        }
+    }
+    // 因为每删除一个元素后,数组的长度发生了变化
+    // 输出的结果:[22,22,11,22]
+    console.log(arr);
+
+    // 倒着遍历
+    for (var i = arr.length - 1; i >= 0; i--) {
+        if (arr[i] === 11) {
+            arr.splice(i, 1);   // 剔除
+        }
+    }
+    console.log(arr);
+</script>
+
+</html>

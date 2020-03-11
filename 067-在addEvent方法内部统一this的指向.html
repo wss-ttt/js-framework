@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+<script>
+    var div1 = document.getElementById('div1');
+
+    addEvent(div1, 'click', function () {
+        console.log(this);
+    });
+
+
+    /* _addEvent(div1, 'click', function () {
+        console.log(this)
+    }) */
+
+    function addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else if (target.attachEvent) {
+            target.attachEvent('on' + type, fn);
+        } else {
+            target['on' + type] = fn;
+        }
+    }
+    // 优化版:  在addEvent方法的内部就把this的指向先改变掉
+    function _addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else {
+            // 在这个地方就把this的指向给改变掉 也是可以的
+            target.attachEvent('on' + type, function () {
+                fn.call(target);
+            });
+        }
+    }
+</script>
+
+</html>

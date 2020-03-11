@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>我是span
+        <a href="#">百度一下</a>
+    </span>
+    <ul>
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+    </ul>
+</body>
+<script>
+    /*
+        遍历所有的li
+        然后分别使用appendChild(span) 
+        但是需要注意,只有第一次添加的是span的本体
+        剩余添加的是span的克隆版(span.cloneNode(true))
+    */
+    var span = document.querySelector('span');
+    var lis = document.querySelectorAll('li');
+
+    for (var i = 0; i < lis.length; i++) {
+        if(i === 0){
+            // 第一次添加的是span本体
+            lis[i].appendChild(span);
+        }else{
+            // 后面添加的是span的克隆版
+            lis[i].appendChild(span.cloneNode(true));
+        }
+    }
+
+
+</script>
+
+</html>

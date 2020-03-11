@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username" value="默认值">
+</body>
+<script>
+    var input = document.getElementById('username');
+
+    // getAttribute获取的是默认的value值
+    var val = input.getAttribute('value');
+
+    // 要获取最新的value值,必须通过点的方式或[]来获取
+    console.log(input.value);
+</script>
+</html>

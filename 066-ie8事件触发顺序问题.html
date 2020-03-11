@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+<script>
+    function fn1() {
+        console.log('fn1');
+    }
+    function fn2() {
+        console.log('fn2');
+    }
+    var div1 = document.getElementById('div1');
+    // 在ff chrom ie9中是先执行fn1回调函数 再执行fn2回调函数
+    // 但是在ie8(含)以下,是先执行fn2回调函数 再执行fn1回调函数
+    addEvent(div1, 'click', fn1);
+    addEvent(div1, 'click', fn2);
+
+    function addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else if (target.attachEvent) {
+            target.attachEvent('on' + type, fn);
+        } else {
+            target['on' + type] = fn;
+        }
+    }
+</script>
+
+</html>

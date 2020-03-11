@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>001<span>好好学习</span></div>
+    <div>002</div>
+    <div>003</div>
+    <div>004</div>
+    <div>005</div>
+</body>
+<script>
+
+    // 测试
+    var divs = document.querySelectorAll('div');
+
+    // text方法
+    // console.log(text(divs));
+    // text(divs, '<h1>aaa</h1>');
+
+    // _text方法
+    console.log(_text(divs));
+    _text(divs, '<h1>aaa</h1>');
+
+    function text(likeArray, text) {
+        /*
+        思路:
+            1.先通过arguments.length判断有没有传递参数
+            2.如果没有传,则遍历likeArray
+            3.把每一个元素的innerText加在一起进行返回
+            4.如果传了,则遍历likeArray
+            5.则给遍历的每一个元素进行赋值(innerText)
+        */
+        var result = '';
+        if (arguments.length === 1) {
+            for (var i = 0, len = likeArray.length; i < len; i++) {
+                result += likeArray[i].innerText;
+            }
+            return result;
+        } else if (arguments.length >= 2) {// 其实这个地方可以直接使用else就可以了
+            for (var i = 0, len = likeArray.length; i < len; i++) {
+                likeArray[i].innerText = text;
+            }
+        }
+    }
+    // 优化版 : 借用数组的forEach方法进行遍历
+    function _text(likeArray, text) {
+        var result = '';
+        if (arguments.length === 1) {
+            [].forEach.call(likeArray, function (val, index) {
+                result += val.innerText;
+            });
+            return result;
+        } else if (arguments.length >= 2) {// 其实这个地方可以直接使用else就可以了
+            [].forEach.call(likeArray, function (val, index) {
+                val.innerText = text;
+            });
+        }
+    }
+</script>
+
+</html>

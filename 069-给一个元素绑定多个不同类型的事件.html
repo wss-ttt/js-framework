@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">确定</div>
+</body>
+<script>
+    // 获取元素
+    var div1 = document.getElementById('div1');
+    // 单击事件的回调函数
+    var clickArr = [function () {
+        console.log('click1');
+    }, function () {
+        console.log('click2');
+    }];;
+    // 绑定click事件
+    addEvent(div1, 'click', function () {
+        for (var i = 0; i < clickArr.length; i++) {
+            clickArr[i]();
+        }
+    });
+    // 鼠标移出事件的回调函数
+    var mouseoutArr = [function () {
+        console.log('鼠标移出1');
+    }, function () {
+        console.log('鼠标移出2');
+    }];
+    // 绑定mouseout事件
+    addEvent(div1, 'mouseout', function () {
+        for (var i = 0; i < mouseoutArr.length; i++) {
+            mouseoutArr[i]();
+        }
+    });
+
+    function addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else if (target.attachEvent) {
+            target.attachEvent('on' + type, fn);
+        } else {  // 这个分支其实可以不要的
+            target['on' + type] = fn;
+        }
+    }
+</script>
+
+</html>

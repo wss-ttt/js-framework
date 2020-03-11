@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1" class="aa bb cc aabbcc"></div>
+</body>
+<script>
+    var div1 = document.getElementById('div1');
+    var className = div1.className;
+    // 1. 下面这个方法 会让前面的两个class类名连在一起去了,所以不行
+    // var res = className.replace('bb','');
+    // 2.在要删除的className的前后各加一个空格
+    // 同时在元素的最前面和最会也加上一个空格(保证最前面的元素和最后的元素能别替换掉)
+    // 3.当然我们最后可以给res去掉前后空格(可有可无)
+    var res = (' ' + className + ' ').replace(' bb ', ' ');
+    // 替换掉后 需要重新给元素进行赋值操作
+    div1.className = res;
+    console.log(res);
+</script>
+
+</html>

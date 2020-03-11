@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn1">确定</button>
+    <button type="button" id="btn2">移除事件</button>
+    <button type="button" id="btn3">绑定事件</button>
+</body>
+<script>
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var btn3 = document.getElementById('btn3');
+    var arr = [function () {
+        console.log(1);
+    }, function () {
+        console.log(2);
+    }];
+    // 绑定事件
+    addEvent(btn1, 'click', function () {
+        for (var i = 0; i < arr.length; i++) {
+            arr[i]();
+        }
+    })
+    // 移除事件
+    addEvent(btn2, 'click', function () {
+        // 清空数组
+        arr = [];
+    })
+    addEvent(btn3, 'click', function () {
+        // 给arr添加事件回调函数
+        arr = [function () {
+            console.log(1);
+        }, function () {
+            console.log(2);
+        }];
+        // 再次绑定事件
+        addEvent(btn1, 'click', function () {
+            for (var i = 0; i < arr.length; i++) {
+                arr[i]();
+            }
+        })
+    })
+
+    function addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else if (target.attachEvent) {
+            target.attachEvent('on' + type, fn);
+        } else {  // 这个分支其实可以不要的
+            target['on' + type] = fn;
+        }
+    }
+
+</script>
+
+</html>

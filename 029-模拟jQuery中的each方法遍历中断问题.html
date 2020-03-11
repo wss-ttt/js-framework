@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 遍历中断
+    let data = [1,2,3,4,5];
+    each(data,function(index,val){
+        if(val === 3){
+            return false;
+        }
+        console.log(index,val);
+    });
+
+    function each(obj, fn) {
+        // 1.需要判断obj是真数组或伪数组,还是对象
+        // 2.如果是真数组或是伪数组,通过for循环遍历这个对象
+        // 3.如果是对象,则通过for in 方式遍历这个对象
+        if (isLikeArray(obj)) {
+            console.log('是伪数组或数组执行这个代码');
+            // 说明是数组 或是伪数组
+            for (var i = 0, len = obj.length; i < len; i++) {
+                // fn(i, obj[i]);
+                // 修改this的指向 指向 -> val(obj[i])
+                if(fn.call(obj[i], i, obj[i]) === false){
+                    break;
+                }
+            }
+        } else {
+            // 说明就是对象
+            console.log('是对象执行这个代码');
+            for (var key in obj) {
+                // fn(key, obj[key]);
+                // 修改this的指向 指向 -> val(obj[key])
+                if(fn.call(obj[key], key, obj[key]) === false){
+                    break;
+                }
+            }
+        }
+    }
+    function isWindow(w) {
+        return !!w && w.window === window;
+    }
+    function isFunction(fn) {
+        return typeof fn === 'function';
+    }
+    function isObject(obj) {
+        if (obj === null) {
+            return false;
+        }
+        // 不明白后面后面为什么要 typeof obj === 'function'
+        if (typeof obj === 'object' || typeof obj === 'function') {
+            return true;
+        }
+        return false;
+    }
+    function isLikeArray(arr) {
+        // 过滤掉函数和window对象
+        if (isFunction(arr) || isWindow(arr) || !isObject(arr)) {
+            return false;
+        }
+        // 判断是不是真数组  是真数组 返回true
+        if (({}).toString.call(arr) === '[object Array]') {
+            return true;
+        }
+        // 判断是不是伪数组 是伪数组 返回true
+        // 实现思路:
+        // 1.先看看这个对象有没有length属性,
+        // 2.如果有,如果length为0,则为伪数组
+        // 3.如果length属性不为0,看看这个数据有没有length-1这个属性,如果有,则是伪数组
+        if (('length' in arr) && (arr.length === 0 || arr.length - 1 in arr)) {
+            return true;
+        }
+        return false;
+    }
+</script>
+
+</html>

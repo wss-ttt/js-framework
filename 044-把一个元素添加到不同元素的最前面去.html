@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="#">百度一下</a>
+    <div>
+        <!-- 没有元素 -->
+    </div>
+    <div>
+        <span>span001</span>
+    </div>
+    <div>
+        <span>002</span>
+        <span>003</span>
+    </div>
+
+</body>
+<script>
+    /*
+    如何把a标签追加到3个div的最前面去
+    实现思路:
+        1.获取a元素和所有的div元素
+        2.遍历所有的div元素,然后通过insertBefor(a元素,div.firstChild);
+    */
+    var a = document.querySelector('a');
+    var divs = document.querySelectorAll('div');
+    for (var i = 0, len = divs.length; i < len; i++) {
+        if (i === 0) {
+            divs[i].insertBefore(a, divs[i].firstChild);
+        } else {
+            divs[i].insertBefore(a.cloneNode(true), divs[i].firstChild);
+        }
+    }
+
+</script>
+
+</html>

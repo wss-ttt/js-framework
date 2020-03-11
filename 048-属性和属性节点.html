@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <span name="乔峰" age="18"></span> 
+</body>
+<script>
+    /*
+    属性节点:
+        1.在html中编写的所有标签,里面的属性都时属性节点
+        2.所有的DOM,都有一个attributes属性
+        这个属性里面按照下标存储了该DOM的所有属性节点
+        
+        
+    属性:
+        1.属性就是对象上的变量
+        2.属性可以通过点的方式添加或获取(当然,如果是数字或变量就得使用[])
+        3.能够使用点的方式进行添加或获取的属性,都能使用[]来进行添加或获取
+
+    属性节点和属性的区别:
+        1.属性节点只属于DOM对象,属性可以属于任意的对象
+        2.属性节点有DOM对象的的那些特征:eg:nodeType nodeName
+        而属性存储的内容是没有共性的
+    
+    如何获取属性节点值:
+    1.通过DOM的attributes属性得到所有属性节点对象
+    然后通过下标取出每一个属性节点对象,再通过nodeValue属性得到这个属性节点值
+    eg:document.querySelector('span').attributes[0].nodeValue
+    2.通过DOM的getAttribute( 属性节点名 )来获取
+
+    如何设置属性节点值:
+    1.通过DOM的attributes属性得到所有属性节点对象
+    然后通过下标取出每一个属性节点对象,再通过nodeValue属性来设置属性值
+    eg:document.querySelector('span').attributes[0].nodeValue = '啊啊'
+    2.通过DOM的setAttribute( 属性节点名,vaulue )来设置
+
+    如何获取设置属性的值
+    1.直接点或者[]来获取或设置
+    */
+
+    var span = document.querySelector('span');
+    console.log(span.attributes);
+    console.log(span['attributes'][0] === span['attributes']['name']); //true
+
+</script>
+</html>

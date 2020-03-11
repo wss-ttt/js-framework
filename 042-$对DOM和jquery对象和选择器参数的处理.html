@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+    </ul>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    // 1.给jquery工厂函数传递一个jquery对象,会得到什么?
+    // 会得到一个新的jquery实例对象,可以认为是传入jquery对象的克隆版
+    var $li = $('li');
+    var $$li = $($li);
+    console.log($li);
+    console.log($$li);
+    console.log($li === $$li);// false
+
+    // 2.给jquery工厂函数传递一个DOM对象,会得到什么?
+    // 得到一个新的jquery实例对象,存储着这个DOM
+    var li = document.querySelector('li');
+    console.log($(li));
+    console.log($(li)[0] === li);// true
+
+    // 3.给jquery工厂函数传递一个选择器,会得到什么?
+    // 得到一个新的jquery实例对象,存储着所有获取到的DOM元素
+    console.log($('.item'));
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn1">发送请求</button>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    $('#btn1').click(function () {
+        $.ajax({
+            url: 'data/person.json',
+            type: 'get',
+            success: function (res) {
+                console.log(res);
+            },
+            error: function (error) {
+                console.log(error);
+                console.log('请求失败');
+            }
+        });
+    });
+</script>
+
+</html>

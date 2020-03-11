@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>4</li>
+        <li>3</li>
+        <li>5</li>
+        <li>2</li>
+    </ul>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    /*  jQuery原型上的核心方法和属性:
+        1.jquery获取版本号
+        2.selector  
+        3.length 获取jQuery实例的长度
+        4.toArray()  把jQuery实例转换为数组
+        5.get()  获取指定下表的元素 获取的是原生的dom
+        6.each()  遍历jQuery实例  把遍历的数据分别传递给回调函数使用
+        7.map()   遍历jQuery实例  把遍历的数据分别传递给回调函数使用 然后把回调函数的返回值收起起来
+                组成一个数组进行返回
+        8.slcie()  截取jQuery实例 返会一个新的jQuery实例
+        9.first()  获取jQuery实例中的第一个元素 是一个jQuery实例
+        10.last()  获取jQuery实例中的最后一个元素 是一个jQuery实例
+        11.eq()  获取jQuery实例中指定下标的元素 是一个jQuery实例
+        12.push()  给jQuery实例添加新元素
+        13.sort()  给jQuery实例中的元素进行排序
+        14.splice()  按照执行的参数进行删除 插入操作
+    */
+
+    // 测试:
+    /* console.log($().jquery);
+    console.log($().selector);
+    console.log($().length);
+    console.log($('li').toArray());// 转换成数组
+    // get方法不传参数 相当于toArray方法
+    console.log($('li').get()); // 不传参数 也是转换成数组
+    console.log($('li').first());
+
+    // 给实例添加属性
+    var $$ = $();
+    $$.push('乔峰');
+    console.log($$);
+
+    // 给实例排序
+    var $lis = $('li');
+    $lis.sort(function (a, b) {
+        return a.innerHTML < b.innerHTML;
+    });
+    console.log($lis);
+    $lis.appendTo(document.body); */
+
+    // splice
+    // 删除
+    /* var $lis = $('li');
+    $lis.splice(0,2);
+    console.log($lis); */
+
+    // 插入
+    var $lis = $('li');
+    $lis.splice(1,1,'乔峰');// '乔峰'对应的索引值就是4
+    console.log($lis);
+</script>
+
+</html>

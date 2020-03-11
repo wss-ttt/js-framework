@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>001</div>
+    <div>002</div>
+    <div>003</div>
+    <div>004</div>
+    <div>005</div>
+</body>
+<script>
+
+    // 测试
+    var divs = document.querySelectorAll('div');
+    // remove(divs);
+    _remove(divs);
+
+    function remove(likeArray) {
+        /*
+        思路:
+            1.遍历likeArray
+            2.把遍历到的每一个元素进行删除
+                a.先通过parentNode获取父元素
+                b.然后父元素对象.removeChile(被删除的元素)
+                c.获取通过自身进行删除(被删除的元素.remove())
+        */
+        for (var i = 0, len = likeArray.length; i < len; i++) {
+            // 通过父节点进行删除
+            // likeArray[i].parentNode.removeChild(likeArray[i]);
+            // 通过自身进行删除
+            likeArray[i].remove();
+        }
+    }
+
+    // 优化版: 借用数组的forEach方法进行遍历操作
+    function _remove(likeArray) {
+        [].forEach.call(likeArray, function (val, index) {
+            // 通过父节点进行删除
+            // val.parentNode.removeChild(val);
+            // 通过自身进行删除
+            val.remove();
+        });
+    }
+</script>
+
+</html>

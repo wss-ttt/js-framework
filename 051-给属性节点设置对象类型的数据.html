@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>001</div>
+    <div>002</div>
+    <div>003</div>
+    <div>004</div>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    var divs = $('div').toArray();
+
+    divs[0].setAttribute('a', { name: '乔峰', age: 18 });
+    console.log(divs[0].getAttribute('a'));
+
+    divs[1].setAttribute('a',new String('好好学习'));
+    console.log(divs[1].getAttribute('a'));
+    console.log(divs[1]['a']);
+
+    divs[2].setAttribute('a',new Date());
+
+    divs[3].setAttribute('a',[1,2,3]);
+</script>
+
+</html>

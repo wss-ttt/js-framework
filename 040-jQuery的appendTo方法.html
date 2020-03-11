@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>我是span1</span>
+    <ul>
+        <li>0001</li>
+        <li>0002</li>
+        <li>0003</li>
+        <li>0004</li>
+        <li>0005</li>
+    </ul>
+    <span>我是span2</span>
+    <div id="div1">我是div1</div>
+    <span>我是span3</span>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    /*
+        appendTo:
+        参数有三种:
+            1.选择器
+            2.DOM
+            3.jq对象
+        返回值:
+            统一为所有被添加的元素组成的新实例 
+    */
+
+    // 参数1:   选择器
+    $('span').appendTo('li');
+    // console.log($('span').appendTo('li'));
+
+    // 参数2:   DOM
+    // var div1 = document.getElementById('div1');
+    // $('span').appendTo(div1);
+    // console.log($('span').appendTo(div1));
+
+    // 参数3:   jQuery对象
+    // $('span').appendTo($('li'));
+    // 返回值 是被添加的所有元素共同组成的新实例
+    // console.log($('span').appendTo($('li')));
+
+</script>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+<script>
+    var div1 = document.getElementById('div1');
+
+    // 回调函数
+    function fn1(e) { // e: 3 事件对象
+        console.log(this);
+        console.log('fn1');
+        console.log(e);
+    }
+    // 回调函数
+    function fn2(e) { // e: 3 事件对象
+        console.log(this);
+        console.log('fn2');
+        console.log(e);
+    }
+    var arr = [fn1, fn2];  // 存放事件回调函数
+
+    addEvent(div1, 'click', function (e) {// e:1 事件对象 ->传递给了2
+        // 遍历事件回调函数
+        for (var i = 0; i < arr.length; i++) {
+            // 通过call改变回调函数内部this的指向
+            arr[i].call(div1, e);// e:2 事件对象  ->  传递给了3
+        }
+    });
+
+
+    /* _addEvent(div1, 'click', function () {
+        var self = this;
+        console.log(self === div1);
+        // 遍历事件回调函数
+        for (var i = 0; i < arr.length; i++) {
+            // 通过call改变回调函数内部this的指向
+            arr[i].call(self);// e:2 事件对象  ->  传递给了3
+        }
+    }) */
+    function addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else if (target.attachEvent) {
+            target.attachEvent('on' + type, fn);
+        } else {
+            target['on' + type] = fn;
+        }
+    }
+    // 优化版:  在addEvent方法的内部就把this的指向先改变掉
+    function _addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else {
+            // 在这个地方就把this的指向给改变掉 也是可以的
+            target.attachEvent('on' + type, function () {
+                fn.call(target);
+            });
+        }
+    }
+</script>
+
+</html>

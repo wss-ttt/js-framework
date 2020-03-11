@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>001</div>
+    <div>002</div>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    function fn1() {
+        console.log('好好学习');
+    }
+    function fn2() {
+        console.log('天天向上');
+    }
+    function fn3(){
+        console.log('111');
+    }
+    // 绑定事件
+    $('div').on('click', fn1);
+    $('div').on('click', fn2);
+    $('div').on('mouseover',fn3);
+
+    // 解绑事件 
+    // 1.传入事件类型和回调,删除指定事件类型上的指定回调函数
+    $('div').off('click',fn1);
+    // 2.只传入事件类型,删除该事件类型上的所有回调函数
+    $('div').off('click');
+    // 3.什么都不传,删除所有事件类型的所有回调
+    $('div').off();
+</script>
+
+</html>

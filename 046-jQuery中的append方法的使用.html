@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <span class="item">span:001</span>
+   <span class="item">span:002</span>
+   <span class="item">span:003</span>
+   <div>div:001</div>
+   <div>div:002</div>
+   <div>div:003</div>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    /*
+        append
+        参数:
+            1.字符串   ->   和appendTo方法不一样的地方
+            2.dom
+            3.jq对象
+        返回值:
+            谁调用就返回谁
+    */
+    // console.log($('div').append($('span')));  // jq对象
+    // console.log($('div').append('.item'));  // 不会当成选择器 而是当成字符串进行添加了
+    var span = document.querySelectorAll('.item');
+    console.log($('div').append(span));   // dom元素
+</script>
+</html>

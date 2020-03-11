@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+<script>
+    // 解决ie8(含)以下版本中事件触发顺序问题
+    /*
+    解决思路:
+        1.只绑定一个事件回调函数,在这个回调函数中,遍历真正的时间回调函数即可 
+    */
+    var div1 = document.getElementById('div1');
+
+    function fn1() {
+        console.log('fn1');
+    }
+    function fn2() {
+        console.log('fn2');
+    }
+    var arr = [fn1, fn2];
+    addEvent(div1, 'click', function () {
+        for (var i = 0; i < arr.length; i++) {
+            arr[i]();
+        }
+    });
+    function addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else if (target.attachEvent) {
+            target.attachEvent('on' + type, fn);
+        } else {
+            target['on' + type] = fn;
+        }
+    }
+</script>
+
+</html>

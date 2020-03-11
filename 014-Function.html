@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    Function.say = function () {
+        console.log('好好学习');
+    }
+    Function.prototype.play = function () {
+        console.log('天天向上');
+    }
+    // 创建一个实例对象
+    var p = new Function();
+    p.play();   // 天天向上
+    // p.say();// 报错
+    Function.say(); // 好好学习
+    Function.play();// 天天向上
+</script>
+
+</html>

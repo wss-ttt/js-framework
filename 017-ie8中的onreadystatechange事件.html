@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box1">确定</div>
+</body>
+<script>
+
+    // ie10(包括ie10)attachEvent方法
+    // ie11(包括ie11)不在支持attachEvent方法
+    /* document.attachEvent('onreadystatechange',function(){
+        console.log(11);
+    }); */
+
+    // ie中没有这个onDOMContentLoaded事件,所以下面代码执行不了
+    /* document.attachEvent('onDOMContentLoaded',function(){
+        console.log(111);
+    }); */
+
+</script>
+</html>

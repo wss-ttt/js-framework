@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // 沙箱模式
+    (function (window) {
+        // 对外暴露的工厂函数
+        function jQuery() {
+            // 构造函数
+            // 注意: 任何函数都可以是构造函数,
+            // 只要new 就是构造函数
+            return new jQuery.fn.init();
+        }
+        // 给原型起一个别名fn
+        jQuery.fn = jQuery.prototype = {
+            constructor:jQuery
+        };
+        // init方法才是jQuery中真正的构造函数
+        var init = jQuery.fn.init = function () {
+        }
+        // 替换构造函数的原型 为jQuery工厂的原型 
+        // 该行代码是为了实现插件
+        init.prototype = jQuery.fn;
+        // 暴露接口
+        window.jQuery = window.$ = jQuery;
+
+    }(window));
+
+    // 实现一个jQuery插件
+    // 原理: 就是在jQuery的原型上添加方法,这样实例对象就能调用
+    jQuery.fn.alert = function () {
+        console.log('好好学习');
+    }
+    var $$ = $();
+    $$.alert();
+
+</script>
+
+</html>

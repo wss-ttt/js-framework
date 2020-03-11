@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1"></div>    
+    <div id="div2"></div>
+    <div id="div3"></div>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    // $('div').attr();  // 不传入任何的参数会报错
+    // 在我们自己的框架中,可以进行判断处理,避免报错
+    // 如果传入的第一个参数不是字符串或对象,那么就直接返回this 
+
+
+    // 1.传入1个参数,获取第一个元素的属性节点值
+    console.log($('div').attr('id'));
+    // 2 传入2个参数,设置属性节点值
+    $('div').attr('index',10);
+    // 3 传入一个对象 -> 批量设置
+    $('div').attr({
+        name:'a',
+        age:18,
+        gender:'女'
+    })
+</script>
+</html>

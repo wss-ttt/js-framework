@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn1">确定</button>
+</body>
+<script>
+    var btn1 = document.getElementById('btn1');
+    btn1.onclick = function (e) {
+        // 因为在ie8(含)以下 e是undefined
+        // 所以就获取window.event这个值
+        var e = e || window.event;
+        console.log(e)
+    }
+</script>
+
+</html>

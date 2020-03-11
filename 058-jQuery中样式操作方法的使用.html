@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div class="aa bb cc"></div> -->
+    <div></div>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+
+    // 1.测试 hasClass的用法
+    // a.只要有一个有 就返回true
+    // console.log($('div').hasClass('aa'));
+
+    // b.所有的元素 都没指定的类名 就返回false
+
+    // 2.测试  addClass的用法
+
+    // 给所有元素添加指定的class  有则忽略
+    // $('div').addClass('red');
+
+    // 也可以添加多个  中间使用空格隔开
+    // $('div').addClass('aa dd');
+
+    // 3.测试  removeClass的用法
+    // a.不传参数  清楚所有的class 也就是清空操作
+    // $('div').removeClass();
+    // b.传参  删除指定的
+    // $('div').removeClass('aa');
+    // 删除多个
+    // $('div').removeClass('aa cc');
+
+    // 测试  传入的参数为空格
+    // $('div').removeClass('');// 不会删除任何的class 也就是不过任何的处理
+
+    // 4.toggleClass的用法
+
+    // 有则删除 没有添加
+    // $('div').toggleClass('item');
+    // 可以传入多个 还是一样中间使用空格隔开
+    // $('div').toggleClass('item aa');
+    // $('div').toggleClass('');
+</script>
+
+</html>

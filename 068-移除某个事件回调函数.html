@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn1">确定</button>
+    <button type="button" id="btn2">移除事件</button>
+</body>
+<script>
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    // 保存事件回调函数
+    var arr = [function () {
+        console.log(1);
+    }, function () {
+        console.log(2);
+    }];
+    // 注册事件
+    addEvent(btn1, 'click', function () {
+        for (var i = 0, len = arr.length; i < len; i++) {
+            arr[i]();
+        }
+    });
+    // 给btn2添加单击事件
+    addEvent(btn2, 'click', function () {
+        // 思路:
+        // 如果指定移除某个回调,则从arr中删除即可
+        // 如果不指定,则认为是全部删除,清空arr即可
+        // 移除事件  通过清空数组可以移除事件回调函数
+        arr = [];
+    })
+
+    function addEvent(target, type, fn) {
+        if (target.addEventListener) {
+            target.addEventListener(type, fn);
+        } else if (target.attachEvent) {
+            target.attachEvent('on' + type, fn);
+        } else {
+            target['on' + type] = fn;
+        }
+    }
+</script>
+
+</html>

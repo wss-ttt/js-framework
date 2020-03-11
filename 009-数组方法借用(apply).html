@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var obj = {};
+    // 借用数组的push方法,给obj对象按照下标方式添加属性,
+    // 并同时添加一个length属性
+    [].push.apply(obj, [1, 2, 3, 4]);
+    // [].push.call([], 1, 3, 3, 4);
+    console.log(obj);
+    /*************************/
+    // 借用数组的pop方法,删除obj的最后一个属性值
+    // [].pop.call(obj);
+    // [].pop.apply(obj);
+    // console.log(obj);
+
+    // console.log([] === []); // false
+    // console.log({} === {}); // false
+
+    /* var person = {
+        0: '乔峰',
+        1: 18,
+        2: '男',
+        length:3
+    };
+    var arr = [];
+    [].concat.apply([], person);
+    // var res = [].concat.call([], person);
+    console.log(res); */
+    /* var arr = [1, 2];
+    var arr2 = [3, 4];
+    var res = arr.concat(arr2);
+    console.log(arr);
+    console.log(arr2);
+    console.log(res); */
+
+    var arr = [];
+    var res = [];
+    var obj = {};
+    arr.push(1, 2, 3);
+    console.log(arr);  // [1,2,3]
+
+    arr.push.apply(res, [1, 2, 3]);
+
+    console.log(res); // [1,2,3]
+
+    // [].push.apply(obj, [1, 2, 3]);
+    [].push.call(obj, 1, 2, 3);
+    console.log(obj);
+
+
+</script>
+
+</html>

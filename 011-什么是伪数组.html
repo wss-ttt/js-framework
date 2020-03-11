@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 下面的情况都是伪数组
+    var arr1 = {
+        length:0
+    };// length=0 有没有元素都是伪数组 
+    var arr2 = {
+        length:0,
+        name:'乔峰'
+    }// length=0 有没有元素都是伪数组
+    var arr3 = {
+        length:3,
+        0:'乔峰',
+        2:'杨过'
+    }// 有length-1这个属性
+    
+    // 不是伪数组的情况
+    var obj1 = {
+        0:'乔峰',
+        1:'杨过'
+    }   // 没有length属性
+
+    var obj2 = {
+        length:3,
+        0:'乔峰',
+        1:'杨过'
+    } // 没有length-1这个属性
+</script>
+</html>

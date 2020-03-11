@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var str = ' aa  bb ';
+    // str = str.trim();
+    var arr = str.split(' ');
+    console.log(arr);
+    // arr = arr.filter(e => e);
+    arr = arr.filter(function (item) {
+        if (!(item === '')) {
+            return item;
+        }
+    });
+    console.log(arr);
+</script>
+
+</html>

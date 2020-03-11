@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <input type="text" value="默认值1"> 
+   <input type="text" value="默认值2"> 
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    // 没有参数  返回第一个元素的值
+    console.log($('input').val());
+    
+    // 传入一个参数 给所有元素进行赋值
+    $('input').val('好好学习');
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn1">get请求</button>
+    <button type="button" id="btn2">post请求</button>
+</body>
+<script>
+    var btn1 = document.getElementById('btn1');
+    btn1.onclick = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', './data/person.json?name=乔峰&age=18');
+        // xhr.open('get', './data/test.js');
+        xhr.onreadystatechange = function () {
+            // 表示请求完成
+            if (xhr.readyState === 4) {
+                // status是200-299之间都算成功
+                // 304走缓存也算成功
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                    // 注意:返回来的数据都是字符串
+                    console.log(xhr.responseText);
+                    console.log(typeof xhr.responseText);
+                } else {
+                    console.log('请求失败');
+                }
+            }
+        }
+        xhr.send();
+    }
+
+    // post请求不能请求静态资源
+    var btn2 = document.getElementById('btn2');
+    btn2.onclick = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', './data/test.json');
+        // post请求 需要设置请求头
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded; charset=UTF-8");
+        xhr.onreadystatechange = function () {
+            // 表示请求完成
+            if (xhr.readyState === 4) {
+                // status是200-299之间都算成功
+                // 304走缓存也算成功
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                    // 注意:返回来的数据都是字符串
+                    console.log(xhr.responseText);
+                    console.log(typeof xhr.responseText);
+                } else {
+                    console.log('请求失败');
+                }
+            }
+        }
+        // xhr.send('name=qiaofeng&age=18');
+        xhr.send();
+    }
+
+</script>
+
+</html>

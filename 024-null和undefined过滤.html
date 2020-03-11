@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    /* function test(num) {
+        // 如何过滤掉null 和 undefined
+        if (num === null) {
+            console.log('传递的是null');
+            return;
+        }
+        if (num === undefined) {// 不能添加单引号 -> 'undefined'
+            console.log('传递的是undefined');
+            return;
+        }
+        console.log('传递的是其他');
+    }
+
+    test(); */
+
+    // 通常情况,会一起过滤掉
+    /* function test(num) {
+        if (num == null) {
+            console.log('传递的是null或undefined');
+            return;
+        }
+        console.log('传递的是其他的');
+    } */
+
+    // test();  // 传递的就是 undefined
+    // test(null); // 传递的就是  null
+
+
+    function test(num) {
+        if (!num) {
+            return;
+        }
+        if (num >= 0) {
+            console.log('>0的数')
+        }
+    }
+
+
+</script>
+
+</html>

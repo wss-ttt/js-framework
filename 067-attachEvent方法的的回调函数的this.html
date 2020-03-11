@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn1">确定</button>
+</body>
+<script>
+    var btn1 = document.getElementById('btn1');
+    btn1.attachEvent('onclick', function () {
+        // 改变this的指向
+        test.call(btn1);
+    })
+    function test() {
+        console.log(this)
+    } 
+</script>
+
+</html>

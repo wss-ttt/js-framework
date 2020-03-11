@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        1.实例成员:
+        提供给实例使用的方法和属性,就称之为实例成员
+        
+        2.静态成员(类成员):
+        提供给函数使用的方法和属性,就称之为静态成员
+
+        3.类
+        在ES6之前,通常我们会把构造函数当做类
+    */
+
+    function Person(name, age) {
+        // 通过this添加的都是实例成员
+        this.name = name;
+        this.age = age;
+    }
+    // MAX_AGE就是静态成员
+    Person.MAX_AGE = 75;// 供类(构造函数)使用,代表人类的最大年龄都是 75岁
+
+    Person.prototype = {
+        constructor: Person,
+        // 这也是供实例使用的成员,
+        // 但是这里的属性和方法,没有添加到实例身上去,
+        // 而是在原型对象上,供所有的实例对象使用(具有通用性)
+        say: function () {
+
+            if (this.age <= 2) {
+                console.log('你还是个婴儿');
+            } else if (this.age > 2 && this.age <= 10) {
+                consle.log('你还是个小孩');
+            } else if (this.age > 10 && this.age <= 18) {
+                console.log('你还是个大孩子');
+            } else {
+                console.log('你已经长大成人了');
+            }
+
+            // 为了减少冗余,我们可以直接调用静态方法
+            Person.say(this.age);
+        }
+    };
+
+    // 如果我们像把say方法写成静态的也行
+    // 注意这个时候,里面就不能使用this了,需要把agez作为一个参数传递进去了
+    Person.say = function (age) {
+        if (age <= 2) {
+            console.log('你还是个婴儿');
+        } else if (age > 2 && age <= 10) {
+            consle.log('你还是个小孩');
+        } else if (age > 10 && age <= 18) {
+            console.log('你还是个大孩子');
+        } else {
+            console.log('你已经长大成人了');
+        }
+    }
+
+    /*
+        为什么都是实例方法复用静态方法了?
+        因为静态方法服务的面更广,既可以服务于实例,也可以服务其他的地方
+        而实例方法只服务于实例,没法服务于更多的地方,所以静态方法无法复用实例方法
+    */
+
+
+</script>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // apply 可以改变this的指向,同时可以把数组或伪数组平铺传入给函数
+    // 但是ie8,apply只能平铺真数组或内置的伪数组,我们自定的伪数组会报错
+    // 注意:伪数组其实是一个对象
+    {
+        /* var obj = {
+            0: '乔峰',
+            1: '杨过',
+            length: 2
+        };
+        var o = {};
+        [].push.apply(o, obj);// 该行代码在ie8中会报错
+        console.log(o); */
+    }
+    // 那么如何解决上面的问题了?
+    {
+        /* var obj = {
+            0: '乔峰',
+            1: '杨过',
+            length: 2
+        };
+        // 可以把ojb放在一个真数组中去(把伪数组变成一个真数组)
+        var arr = [];
+        for (var i = 0, len = obj.length; i < len; i++) {
+            arr.push(obj[i]);
+        }
+        var o = {};
+        [].push.apply(o, arr);// 这样ie8中就不会报错了
+        console.log(o); */
+    }
+    {
+        /* var obj = {
+            0: '乔峰',
+            1: '杨过',
+            length: 2
+        };
+        // var arr = [].slice.call(obj)
+        var arr = [].slice.apply(obj);
+        console.log(arr);// ['乔峰','杨过'] */
+    }
+    {
+        // 把一个伪数组转换成真数组
+        var obj = {
+            0: '乔峰',
+            1: '杨过',
+            length: 2
+        };
+        var arr = [];
+        [].push.apply(arr, obj);
+        console.log(arr);
+    }
+    {
+        // 把一个伪数组转换成真数组
+        /* var obj = {
+            0: '乔峰',
+            1: '杨过',
+            length: 2
+        };
+        var res = [].concat.apply([],obj);
+        console.log(res); */
+    }
+    {
+        /* var obj = {
+            0: '乔峰',
+            1: '杨过',
+            length: 2
+        };
+
+        var arr = [];
+        for (var i = 0, len = obj.length; i < len; i++) {
+            arr.push(obj[i]);
+        }
+        
+        console.log(arr);
+        console.log(arr.length);// 输出: 2 */
+    }
+    {
+        var arr = [1, 2, 3];
+        var res = Array.from(arr);
+        console.log(res);
+    }
+</script>
+
+</html>

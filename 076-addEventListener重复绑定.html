@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1" type="button">确定</button>
+</body>
+<script>
+    var btn1 = document.getElementById('btn1');
+    // addEventListener   会自动去重
+    /* btn1.addEventListener('click',fn1);
+    btn1.addEventListener('click',fn1);
+    btn1.addEventListener('click',fn2); */
+    function fn1(){
+        console.log(1);
+    }
+    function fn2(){
+        console.log(2);
+    } 
+
+    // ie9+(除ie11会报错)   可以自动去重
+    // 测试ie8(含)以下版本中   不会自动去重
+    btn1.attachEvent('onclick',fn1);
+    btn1.attachEvent('onclick',fn1);
+    btn1.attachEvent('onclick',fn2);
+</script>
+</html>

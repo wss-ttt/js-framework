@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var obj = {
+        name: '乔峰',
+        age: 18,
+        sex: '男'
+    }
+    console.log(objToUrl(obj));
+    console.log(_objToUrl(obj));
+    // name=乔峰&age=18&sex=男
+    function objToUrl(data) {
+        var result = '';
+        var arr = [];
+        for (var key in data) {
+            result += key + '=' + data[key] + '&';
+        }
+
+        // 同时需要去掉最后一个 '&'符号
+        return result.slice(0, -1);
+    }
+
+    function _objToUrl(data) {
+        var arr = [];
+        for (key in data) {
+            arr.push(key + '=' + data[key]);
+        }
+        return arr.join('&');
+    }
+</script>
+
+</html>

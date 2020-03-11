@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        Object.prototype.toString
+        作用: 根据内部的this返回类似于这样的字符串 [object 构造函数名称] 
+        
+        但是这个方法有个缺点,
+        不能获取用户自定义对象的具体类型,只能获取内置对象的类型
+    */
+    console.log(Object.prototype.toString.call([]));//[object Array]
+    console.log(Object.prototype.toString.call(new Date()));//[object Date]
+    console.log(Object.prototype.toString.call(Array));// [object Function]
+    console.log(Object.prototype.toString.call(Date)); // [object Function]
+
+    // 简写
+    // 因为{}字面量对象是直接继承Object.prototype
+    // 所以通过{}方位的toString,一定是来自Object.prototype上的
+    console.log(({}).toString.call([]));// [object Array]
+    console.log(({}).toString.call(new Date()));// [object Date]
+    console.log(({}).toString.call(Array)); // [object Function]
+    console.log(({}).toString.call(Date)); // [object Function]
+
+    // 构造函数
+    function Person(){
+
+    }
+    Person.prototype.say = function(){
+        console.log('好好学习');
+    }
+    var p = new Person();
+    console.log(({}).toString.call(p));// [object object]
+    // p.say(); // 输出:好好学习
+    // Person.prototype.say(); // 输出: 好好学习
+
+</script>
+
+</html>

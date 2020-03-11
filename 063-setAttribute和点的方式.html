@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1" class="aa" index="10" asex="男"></div>
+</body>
+<script>
+    /*
+        1.动态添加的自定义的属性,两种方式不能混用 
+    */
+    var div1 = document.getElementById('div1');
+    div1.aname = '乔峰';
+    console.log(div1.aname);
+    console.log(div1.getAttribute('aname')); // null
+
+    div1.setAttribute('age', 18);
+    console.log(div1.age);   // undefined
+    console.log(div1.getAttribute('age'));  // 18
+
+    /*
+        2.动态添加的原生的属性,两种方式都能获取
+    */
+    div1.title = 'aaa'
+    console.log(div1.title);  // aaa
+    console.log(div1.getAttribute('title')); // aaa
+
+    div1.setAttribute('align','bbb');
+    console.log(div1.align);  // bbb
+    console.log(div1.getAttribute('align')); // bbb
+
+    /*
+        3.如果一开始 ,属性节点(原生的属性节点)就存在的话,也就是说
+        不是通过动态方式添加上去的,两种方式都是可以获取到的
+    */ 
+    console.log(div1.id);  // div1
+    console.log(div1.getAttribute('id'));  // div1
+    console.log(div1.className);   // aa
+    console.log(div1.getAttribute('class'));  // aa
+    /*
+        4.如果一开始 ,属性节点(自定义的属性节点)就存在的话,也就是说
+        不是通过动态方式添加上去的,只能通过
+        getAttribute方式来获取值
+    */ 
+    console.log(div1.index);   // undefined
+    console.log(div1.getAttribute('index')); // 10
+
+    
+
+</script>
+
+</html>

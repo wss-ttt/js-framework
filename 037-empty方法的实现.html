@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>001</div>
+    <div>002</div>
+    <div>003</div>
+    <div>004</div>
+    <div>005</div>
+</body>
+<script>
+    // 测试
+    var divs = document.querySelectorAll('div');
+    // empty(divs);
+    _empty(divs);
+    // 传入的伪数组
+    function empty(likeArray) {
+        /*
+        思路:
+          1.遍历likeArray  
+          2.遍历到的每一个元素清空内容(对象.innerHTML = '')
+        */
+        for (var i = 0, len = likeArray.length; i < len; i++) {
+            likeArray[i].innerHTML = '';
+        }
+    }
+    // 优化版: 借用数组的forEach方法进行遍历 
+    function _empty(likeArray) {
+        [].forEach.call(likeArray, function (val, index) {
+            val.innerHTML = '';
+        });
+    }
+
+</script>
+
+</html>

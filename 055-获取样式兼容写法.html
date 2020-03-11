@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* div{
+            width: 100px;
+            height: 100px;
+            background-color: #1acd7e;
+        } */
+    </style>
+</head>
+<body>
+    <div id="box1" style="height:100px; background-color: red;"></div> 
+</body>
+<script>
+
+    var div = document.getElementById('box1');
+
+    console.log(getStyle(div,'height'));
+    console.log(getStyle(div,'backgroundColor'));
+
+    function getStyle(obj,name){
+        if(obj.currentStyle){
+            // ie浏览器
+            return obj.currentStyle[name];
+        }else{
+            // 谷歌 火狐浏览器
+            return getComputedStyle(obj,null)[name];
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 借用数组的方法 来实现 伪数组的增删改查
+    {
+        // 在末尾添加元素
+        let obj = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        };
+        [].push.apply(obj, ['张三', '李四', '王五']);
+        console.log(obj);
+    }
+    {
+        // 在头部添加元素
+        let obj = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        };
+        [].unshift.apply(obj, ['张三', '李四', '王五']);
+        console.log(obj);
+    }
+    {
+        // 删除最后一个元素
+        let obj = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        };
+        [].pop.apply(obj);
+        console.log(obj);
+    }
+    {
+        // 删除第一个元素
+        let obj = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        };
+        [].shift.apply(obj);
+        console.log(obj);
+    }
+    {
+        // 截取伪数组  -> 返回一个真数组
+        let obj = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        };
+        let res = [].slice.apply(obj);
+        console.log(res);
+    }
+    {
+        // 使用splice  进行删除   
+        let obj = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        }
+        let res = [].splice.apply(obj, [0]);
+        console.log(obj);
+        console.log(res);
+    }
+    {
+        // 使用splice  进行添加
+        let obj = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        }
+        let res = [].splice.apply(obj, [0, 0, '张三', '李四', '王五']);
+        console.log(obj);
+        console.log(res);
+    }
+    {
+        let data = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        }
+        let obj = {};
+        let arr = [];
+        [].push.apply(obj, data);
+        [].push.apply(arr, data);
+        console.log(obj);
+        console.log(arr);
+    }
+    {
+        // 通过slice方法将伪数组->真数组
+        let data = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        }
+        let res = [].slice.apply(data);
+        console.log(res);
+    }
+    {
+        // 通过splice方法将伪数组->真数组
+        let data = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        }
+        let res = [].splice.apply(data,[0]);
+        console.log(res);
+    }
+    {
+        // 通过push方法 将伪数组  -> 真数组
+        let data = {
+            0: '乔峰',
+            1: '杨过',
+            2: '小龙女',
+            length: 3
+        }
+        let arr = [];
+        [].push.apply(arr,data);
+        console.log(arr);
+    }
+    {
+        // 通过push方法 将 真数组  -> 伪数组
+        let arr = ['乔峰','杨过','小龙女'];
+        let obj = {};
+        [].push.apply(obj,arr);
+        console.log(obj);
+    }
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function jQuery() { }
+
+    // extend方法实现 混入继承
+    jQuery.extend = jQuery.prototype.extend = function (obj) {
+        for (var key in obj) {
+            this[key] = obj[key];
+        }
+    }
+
+    // 添加一个静态方法
+    jQuery.extend({
+        isFunction: function (fn) {
+            return typeof fn === 'function';
+        }
+    });
+    // 添加一个实例方法
+    jQuery.prototype.extend({
+        say: function (msg) {
+            console.log(msg);
+        }
+    });
+
+    var p = new jQuery();
+    // 调用实例方法
+    p.say('好好学习');
+    // 调用静态方法
+    console.log(jQuery.isFunction([]));
+
+    // 构造函数不能直接使用自己原型中的方法(Function除外)
+    // jQuery.say();  // 直接报错
+
+    // 同理:实例不能直接使用构造函数身上的静态方法
+    // console.log(p.isFunction());   // 直接报错
+</script>
+
+</html>

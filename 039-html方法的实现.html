@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>001</div>
+    <div>002</div>
+    <div>003</div>
+    <div>004</div>
+    <div>005</div>
+</body>
+<script>
+
+    // 测试
+    var divs = document.querySelectorAll('div');
+
+    // html方法
+    // console.log(html(divs));
+    // html(divs, '<h1>aaa</h1>');
+
+    // _html方法
+    console.log(_html(divs));
+    _html(divs, '<h1>aaa</h1>');
+
+    function html(likeArray, html) {
+        /*
+        思路:
+            1.先通过arguments.length判断有没有传递参数
+            2.如果没有传,获取第一个元素的内容
+            3.如果传了,则遍历likeArray
+            4.给遍历的每一个元素进行赋值(innerHTML)
+        */
+        if (arguments.length === 1) {
+            return likeArray[0].innerHTML;
+        } else if (arguments.length >= 2) {// 其实这个地方可以直接使用else就可以了
+            for (var i = 0, len = likeArray.length; i < len; i++) {
+                likeArray[i].innerHTML = html;
+            }
+        }
+    }
+    // 优化版 : 借用数组的forEach方法进行遍历
+    function _html(likeArray, html) {
+        if (arguments.length === 1) {
+            return likeArray[0].innerHTML;
+        } else if (arguments.length >= 2) {// 其实这个地方可以直接使用else就可以了
+            [].forEach.call(likeArray, function (val, index) {
+                val.innerHTML = html;
+            });
+        }
+    }
+</script>
+
+</html>

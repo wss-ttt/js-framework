@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">确定</div>
+</body>
+<script>
+    // 1.通过on来绑定事件
+    var div1 = document.getElementById('div1');
+    // chrome  ff ie9+(含9)     -> 能打印处事件对象
+    // ie8(含8)以下  -> undefined
+    /* div1.onclick = function(e){
+        console.log(e); 
+    } */
+    // ie8(含)以下版本   -> 获取事件对象
+    /* div1.onclick = function(){
+        console.log(window.event)
+    } */
+
+
+    // 2.通过attachEvent来绑定事件
+    // ie10(含)以下版本,都能获取到事件对象
+    div1.attachEvent('onclick',function(e){
+        console.log(e)
+    })
+
+    // 3.通过addEventListener来绑定事件
+    // chrome ff ie+  能够获取事件对象
+    // ie8中 报错:对象不支持“addEventListener”属性或方法
+   /*  div1.addEventListener('click',function(e){
+        console.log(e)
+    }) */
+</script>
+
+</html>

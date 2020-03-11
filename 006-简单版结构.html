@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 简单版 -->  帮助理解
+    // 构造函数
+    function Person() { }
+    Person.prototype.say = function () {
+        console.log('好好学习');
+    }
+    // 工厂函数  --> 返回一个对象
+    function createPerson() {
+        return new Person();
+    }
+    var p = createPerson();
+    p.say();// 好好学习
+</script>
+
+</html>

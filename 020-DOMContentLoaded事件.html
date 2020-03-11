@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // html5中新增DOMContentLoaded事件ie9
+    // 这个事件在DOM解析完毕以后触发
+    // 通常这个事件比onload快很多
+    // 但是也有很少的例外
+    // 如果发生了例外,DOMContentLoaded事件和onload事件触发的间隔时间不会很大,
+    // 所以可以认为DOMContentLoaded比onload要快,只监听DOMContentLoaded即可
+
+    window.onload = function () {
+        var spans = document.querySelectorAll('span');
+        console.log(spans, 'onload');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var spans = document.querySelectorAll('span');
+        console.log(spans, 'DOMContentLoaded');
+    });
+
+</script>
+<span>111</span>
+<span>222</span>
+
+</html>

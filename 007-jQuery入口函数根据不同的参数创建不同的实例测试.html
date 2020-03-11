@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    /*
+    测试:
+        1.传入 null,undefined,0,NaN,'',false 
+        2.选择器
+        3.html片段
+        4.数组
+        5.伪数组
+        6.对象
+        7.其他基本数据类型
+        8.DOM
+    */
+
+    // 1. 统一返回的是空的实例
+    console.log($(null));
+    console.log($(undefined));
+    console.log($(0));
+    console.log($(NaN));
+    console.log($(''));
+    console.log($(false));
+    // 2.如果传入的是选择器,
+    // 那么会把获取到的元素按照下标存储起来,
+    // 同时添加一个length属性
+    console.log($('.item'));
+
+    // 3.如果传入的是html片段,那么会根据这些片段创建DOM,
+    // 然后按照下标存储起来,
+    // 同时添加一个length属性
+    // {0:span,length:1}
+    console.log($('<span></span>'));
+    // {0:div,1:div,2:div,length:3}
+    console.log($('<div>1</div><div>2</div><div>3</div>'));
+
+    // 4.如果传入的是数组,那么会把数组中的每一项分别添加到实例身上去
+    // 同时添加length属性
+    console.log($(['乔峰', '杨过', '小龙女']));
+
+    // 5.如果传入的是伪数据,那么会把数组中的每一项分别添加到实例身上去
+    // 同时添加length属性
+    var divs = document.querySelectorAll('.item');// 伪数组
+    console.log($(divs));
+
+    // 6.如果传入是一个对象,那么会把这个对象按照下标添加到实例身上去
+    // 同时添加一个length属性
+    console.log($(new Date()));
+    console.log($(new Array('乔峰', '杨过', '小龙女')));
+    console.log($({ name: '乔峰', age: 18 }));
+
+    // 7.如果传入的是基本数据类型,null,undefined除外,字符串除外,
+    // 那么会直接把这个数据添加到实例身上,
+    // 同时添加一个length属性
+    console.log($(1111));
+    console.log($('aaa'));
+
+    // 8.如果传入的是DOM对象,会这个DOM对象添加到实例身上去,
+    // 同时添加一个length属性
+    console.log($(document.body));
+
+    // jQuery入口函数对参数处理的总结规律:
+    /*
+        参数类型:
+        1.传入 null,undefined,0,NaN,'',false 
+        2.选择器
+        3.html片段
+        4.数组
+        5.伪数组
+        6.对象
+        7.其他基本数据类型
+        8.DOM
+        -----------------------------------------
+        1.传入 null,undefined,0,NaN,'',false
+        返回的是空实例对象
+        2.传入字符串,那么需要判断是html片段还是选择器,
+        如果是html片段,则创建对应的DOM,然后添加到实例身上去
+        否则按照选择器获取页面DOM,然后添加到实例身上去
+        3.如果是数组和伪数组,那么把每一项添加到实例身上去
+        4.除了上面的数据类型,其他的,统一添加到实例身上去
+    */
+</script>
+
+</html>

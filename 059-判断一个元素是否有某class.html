@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1" class="a b c aa bb cc abc"></div>
+</body>
+<script>
+    // 判断是否有'ab'这个class
+    var div1 = document.getElementById('div1');
+    var classNames = div1.className;
+    console.log(classNames);
+    // 1.该方法不靠谱
+    console.log(classNames.indexOf('ab') !== -1); // truej
+    // 2.还差一点   两边的边界不能判断出来
+    console.log(classNames.indexOf(' ' + 'a' + ' ') !== -1); // false
+    // 3.完美
+    console.log((' ' + classNames + ' ').indexOf(' ' + 'a' + ' ') !== -1); // true
+    console.log((' ' + classNames + ' ').indexOf(' ' + 'abc' + ' ') !== -1); // true
+    console.log((' ' + classNames + ' ').indexOf(' ' + 'ab' + ' ') !== -1); // false
+
+    // 另外一种实现思路就是把classNames分割成数组,再进行判断
+</script>
+
+</html>

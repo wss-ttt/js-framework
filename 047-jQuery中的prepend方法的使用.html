@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>span:001</span>
+    <span>span:002</span>
+    <span>span:003</span>
+    <div>div:0001</div>
+    <div>div:0002</div>
+    <div>div:0003</div>
+</body>
+<script src="jquery-2.2.0.js"></script>
+<script>
+    // 1.字符串
+    $('div').prepend('span');
+    // 2.dom
+    // var span = document.querySelectorAll('span');
+    // console.log($('div').prepend(span));
+    // 3.jq对象
+    // console.log($('div').prepend($('span')));
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="#">百度一下</a>
+    <span>
+        <a href="#">好好学习</a>
+    </span>
+</body>
+<script>
+    var a = document.querySelector('a');
+    var span = document.querySelector('span');
+    span.insertBefore(a, null);// 第二个参数为null或undefined时,相当于appendChild功能
+</script>
+
+</html>

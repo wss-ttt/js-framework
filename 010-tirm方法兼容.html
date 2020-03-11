@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var str = trim('    aaaa    ');
+    console.log(str);
+    function trim(str) {
+        // 如果不是字符串传递是什么就返回什么
+        if (typeof str !== 'string') {
+            return str;
+        }
+        // 优先使用内置的trim方法
+        if (str.trim) {
+            return str.trim();
+        }
+        // 把首尾空白字符串替换为空,染回返回
+        return str.replace(/^\s+|\s+$/g, '');  //  /^\s*|\s*$/g
+    }
+
+</script>
+
+</html>
